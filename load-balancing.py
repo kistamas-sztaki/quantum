@@ -5,9 +5,11 @@ def build_model(jobs : list, T : int):
     cqm = dimod.ConstrainedQuadraticModel()
     n = len(jobs)
     x = [[dimod.Binary(f'x_{i}_{j}') for j in range(T)] for i in range(n)]
+    print(x)
     i = 0
-    for [r,d] in jobs:
-        cqm.add_constraint(sum([x[i][j] for j in range(r, d+1)] == 1 ))
+    for r,d in jobs:
+        print(r, d)
+        cqm.add_constraint(sum([x[i][j] for j in range(r, d+1)]) == 1 )
         for j in range(T):
             if j < r or j > d:
                 cqm.set_upper_bound(x[i][j],0)
