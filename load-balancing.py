@@ -29,5 +29,6 @@ if len(feasible_sampleset):
       len(feasible_sampleset), len(sampleset)))
    print("best: ",best) 
    i = 0
-   for r,d in jobs:
+   for r,d in job_lst:
        print([best.sample[f'x_{i}_{j}'] for j in range(r,d+1)])
+       i=i+1
